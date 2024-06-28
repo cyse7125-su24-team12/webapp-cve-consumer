@@ -1,0 +1,9 @@
+# Use a Flyway base image
+FROM flyway/flyway:10
+
+# Copy your migration scripts and the Flyway configuration file into the container
+COPY ./internal/migration/scripts /flyway/sql
+COPY ./internal/migration/ /flyway/conf
+
+# Set the default command to run Flyway migrations using the configuration file
+CMD ["migrate"]
